@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>McKenzie Lumbar Assessment Digital Form</title>
+    <!-- Load Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Custom Styles for Form Aesthetics */
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f7f7f7;
+        }
+        .form-section {
+            padding: 1.5rem;
+            border-bottom: 2px solid #e0e0e0;
+        }
+        .input-group label {
+            font-weight: 500;
+            color: #333;
+        }
+        .input-text, select, textarea {
+            border: 1px solid #ccc;
+            padding: 0.5rem;
+            border-radius: 0.375rem;
+            width: 100%;
+            transition: all 0.2s;
+        }
+        .input-text:focus, select:focus, textarea:focus {
+            border-color: #0b7f8c;
+            box-shadow: 0 0 0 3px rgba(11, 127, 140, 0.2);
+        }
+        .radio-group label, .checkbox-group label {
+            cursor: pointer;
+            padding: 0.25rem 0.5rem;
+            border-radius: 0.375rem;
+            transition: background-color 0.2s;
+            display: inline-block;
+        }
+        .radio-group input[type="radio"]:checked + label,
+        .checkbox-group input[type="checkbox"]:checked + label {
+            background-color: #0b7f8c;
+            color: white;
+            font-weight: 600;
+        }
+        .radio-inline label {
+            margin-right: 1rem;
+        }
+        .table-input {
+            width: 100%;
+            padding: 0.25rem;
+            text-align: center;
+        }
+        .table-header {
+            background-color: #f3f4f6;
+            font-weight: 600;
+        }
+    </style>
+</head>
+<body class="p-4 sm:p-8">
+
+    <div class="max-w-4xl mx-auto bg-white shadow-xl rounded-xl">
+        <header class="text-center p-6 bg-gray-900 text-white rounded-t-xl">
+            <h1 class="text-3xl font-bold mb-1">THE MCKENZIE INSTITUTE</h1>
+            <h2 class="text-xl font-light">LUMBAR SPINE ASSESSMENT (Digital Form)</h2>
+        </header>
+
+        <form id="assessmentForm" class="p-6">
+
+            <!-- ============================================= -->
+            <!-- SECTION 1: METADATA & HISTORY -->
+            <!-- Note: This section remains the same as previously generated -->
+            <!-- ============================================= -->
+            <section class="form-section">
+                <h3 class="text-xl font-semibold text-gray-800 mb-4 border-b pb-2">1. Patient History & Demographics</h3>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                    <div class="input-group">
+                        <label for="name" class="block mb-1">Name</label>
+                        <input type="text" id="name" name="name" class="input-text" required>
+                    </div>
+                    <div class="input-group">
+                        <label for="dob" class="block mb-1">Date of Birth</label>
+                        <input type="date" id="dob" name="dateOfBirth" class="input-text">
+                    </div>
+                    <div class="input-group">
+                        <label for="date" class="block mb-1">Assessment Date</label>
+                        <input type="date" id="date" name="date" class="input-text" value="" required>
+                    </div>
+                    <div class="input-group">
+                        <label for="gender" class="block mb-1">Gender</label>
+                        <select id="gender" name="gender" class="input-text">
+                            <option value="">Select</option>
+                            <option value="M">Male</option>
+                            <option value="F">Female</option>
+                            <option value="O">Other</option>
+                        </select>
+                    </div>
+                    <div class="input-group">
+                        <label for="age" class="block mb-1">Age</label>
+                        <input type="number" id="age" name="age" class="input-text">
+                    </div>
+                    <div class="input-group">
+                        <label for="nprs" class="block mb-1">NPRS (0-10)</label>
+                        <input type="number" id="nprs" name="nprs" class="input-text" min="0" max="10">
+                    </div>
+                </div>
+            </section>
+
+            <!-- ============================================= -->
+            <!-- SECTION 2: PRESENT SYMPTOMS -->
+            <!-- Note: This section remains the same as previously generated -->
+            <!-- ============================================= -->
+            <section class="form-section">
+                <h3 class="text-xl font-semibold text-gray-800 mb-4 border-b pb-2">2. Present Symptoms</h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
+                    <div class="input-group">
+                        <label for="presentSince" class="block mb-1">Present Since</label>
+                        <input type="date" id="presentSince" name="presentSince" class="input-text">
+                    </div>
+                    <div class="input-group">
+                        <label class="block mb-1">Status</label>
+                        <div class="radio-group flex justify-around p-1 rounded-lg bg-gray-100">
+                            <input type="radio" id="status-improving" name="status" value="improving" class="hidden">
+                            <label for="status-improving">Improving</label>
+                            <input type="radio" id="status-unchanging" name="status" value="unchanging" class="hidden">
+                            <label for="status-unchanging">Unchanging</label>
+                            <input type="radio" id="status-worsening" name="status" value="worsening" class="hidden">
+                            <label for="status-worsening">Worsening</label>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Worse/Better Checkboxes -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div>
+                        <h4 class="font-bold text-lg mb-2 text-red-600">Worse With (Activities/Time/Movement)</h4>
+                        <div class="checkbox-group grid grid-cols-2 gap-1 p-2 rounded-lg border">
+                            <input type="checkbox" id="worse-bending" name="worseActivities" value="bending" class="hidden">
+                            <label for="worse-bending" class="text-sm">Bending</label>
+                            <input type="checkbox" id="worse-sitting" name="worseActivities" value="sitting / rising" class="hidden">
+                            <label for="worse-sitting" class="text-sm">Sitting / Rising</label>
+                            <input type="checkbox" id="worse-am" name="worseTime" value="am" class="hidden">
+                            <label for="worse-am" class="text-sm">AM</label>
+                            <input type="checkbox" id="worse-progresses" name="worseTime" value="as the day progresses" class="hidden">
+                            <label for="worse-progresses" class="text-sm">As Day Progresses</label>
+                            <input type="checkbox" id="worse-still" name="worseMovement" value="when still" class="hidden">
+                            <label for="worse-still" class="text-sm">When Still</label>
+                            <input type="checkbox" id="worse-move" name="worseMovement" value="on the move" class="hidden">
+                            <label for="worse-move" class="text-sm">On The Move</label>
+                        </div>
+                    </div>
+                    <div>
+                        <h4 class="font-bold text-lg mb-2 text-green-600">Better With (Activities/Time/Movement)</h4>
+                        <div class="checkbox-group grid grid-cols-2 gap-1 p-2 rounded-lg border">
+                            <input type="checkbox" id="better-bending" name="betterActivities" value="bending" class="hidden">
+                            <label for="better-bending" class="text-sm">Bending</label>
+                            <input type="checkbox" id="better-sitting" name="betterActivities" value="sitting" class="hidden">
+                            <label for="better-sitting" class="text-sm">Sitting</label>
+                            <input type="checkbox" id="better-am" name="betterTime" value="am" class="hidden">
+                            <label for="better-am" class="text-sm">AM</label>
+                            <input type="checkbox" id="better-progresses" name="betterTime" value="as the day progresses" class="hidden">
+                            <label for="better-progresses" class="text-sm">As Day Progresses</label>
+                            <input type="checkbox" id="better-still" name="betterMovement" value="when still" class="hidden">
+                            <label for="better-still" class="text-sm">When Still</label>
+                            <input type="checkbox" id="better-move" name="betterMovement" value="on the move" class="hidden">
+                            <label for="better-move" class="text-sm">On The Move</label>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- ============================================= -->
+            <!-- SECTION 3: EXAMINATION (MOVEMENT LOSS) -->
+            <!-- Note: This section remains the same as previously generated -->
+            <!-- ============================================= -->
+            <section class="form-section">
+                <h3 class="text-xl font-semibold text-gray-800 mb-4 border-b pb-2">3. Examination: Movement Loss</h3>
+                <div class="overflow-x-auto">
+                    <table class="min-w-full bg-white border border-gray-200 rounded-lg">
+                        <thead>
+                            <tr>
+                                <th class="py-2 px-4 border-b table-header w-1/5">Movement</th>
+                                <th class="py-2 px-4 border-b table-header">Maj</th>
+                                <th class="py-2 px-4 border-b table-header">Mod</th>
+                                <th class="py-2 px-4 border-b table-header">Min</th>
+                                <th class="py-2 px-4 border-b table-header">Nil</th>
+                                <th class="py-2 px-4 border-b table-header w-2/5">Symptoms/Notes</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- Flexion -->
+                            <tr data-movement="Flexion">
+                                <td class="py-2 px-4 border-b font-medium">Flexion</td>
+                                <td class="py-2 px-4 border-b radio-group"><input type="radio" name="loss-Flexion" id="loss-Flexion-Maj" value="Maj" class="hidden"><label for="loss-Flexion-Maj" class="p-1">M</label></td>
+                                <td class="py-2 px-4 border-b radio-group"><input type="radio" name="loss-Flexion" id="loss-Flexion-Mod" value="Mod" class="hidden"><label for="loss-Flexion-Mod" class="p-1">O</label></td>
+                                <td class="py-2 px-4 border-b radio-group"><input type="radio" name="loss-Flexion" id="loss-Flexion-Min" value="Min" class="hidden"><label for="loss-Flexion-Min" class="p-1">I</label></td>
+                                <td class="py-2 px-4 border-b radio-group"><input type="radio" name="loss-Flexion" id="loss-Flexion-Nil" value="Nil" class="hidden"><label for="loss-Flexion-Nil" class="p-1">L</label></td>
+                                <td class="py-2 px-4 border-b"><input type="text" data-type="symptoms-Flexion" class="input-text table-input text-sm"></td>
+                            </tr>
+                            <!-- Extension -->
+                            <tr data-movement="Extension">
+                                <td class="py-2 px-4 border-b font-medium">Extension</td>
+                                <td class="py-2 px-4 border-b radio-group"><input type="radio" name="loss-Extension" id="loss-Extension-Maj" value="Maj" class="hidden"><label for="loss-Extension-Maj" class="p-1">M</label></td>
+                                <td class="py-2 px-4 border-b radio-group"><input type="radio" name="loss-Extension" id="loss-Extension-Mod" value="Mod" class="hidden"><label for="loss-Extension-Mod" class="p-1">O</label></td>
+                                <td class="py-2 px-4 border-b radio-group"><input type="radio" name="loss-Extension" id="loss-Extension-Min" value="Min" class="hidden"><label for="loss-Extension-Min" class="p-1">I</label></td>
+                                <td class="py-2 px-4 border-b radio-group"><input type="radio" name="loss-Extension" id="loss-Extension-Nil" value="Nil" class="hidden"><label for="loss-Extension-Nil" class="p-1">L</label></td>
+                                <td class="py-2 px-4 border-b"><input type="text" data-type="symptoms-Extension" class="input-text table-input text-sm"></td>
+                            </tr>
+                            <!-- Side gliding R -->
+                            <tr data-movement="SideGlidingR">
+                                <td class="py-2 px-4 border-b font-medium">Side Gliding R</td>
+                                <td class="py-2 px-4 border-b radio-group"><input type="radio" name="loss-SideGlidingR" id="loss-SideGlidingR-Maj" value="Maj" class="hidden"><label for="loss-SideGlidingR-Maj" class="p-1">M</label></td>
+                                <td class="py-2 px-4 border-b radio-group"><input type="radio" name="loss-SideGlidingR" id="loss-SideGlidingR-Mod" value="Mod" class="hidden"><label for="loss-SideGlidingR-Mod" class="p-1">O</label></td>
+                                <td class="py-2 px-4 border-b radio-group"><input type="radio" name="loss-SideGlidingR" id="loss-SideGlidingR-Min" value="Min" class="hidden"><label for="loss-SideGlidingR-Min" class="p-1">I</label></td>
+                                <td class="py-2 px-4 border-b radio-group"><input type="radio" name="loss-SideGlidingR" id="loss-SideGlidingR-Nil" value="Nil" class="hidden"><label for="loss-SideGlidingR-Nil" class="p-1">L</label></td>
+                                <td class="py-2 px-4 border-b"><input type="text" data-type="symptoms-SideGlidingR" class="input-text table-input text-sm"></td>
+                            </tr>
+                            <!-- Side gliding L -->
+                            <tr data-movement="SideGlidingL">
+                                <td class="py-2 px-4 border-b font-medium">Side Gliding L</td>
+                                <td class="py-2 px-4 border-b radio-group"><input type="radio" name="loss-SideGlidingL" id="loss-SideGlidingL-Maj" value="Maj" class="hidden"><label for="loss-SideGlidingL-Maj" class="p-1">M</label></td>
+                                <td class="py-2 px-4 border-b radio-group"><input type="radio" name="loss-SideGlidingL" id="loss-SideGlidingL-Mod" value="Mod" class="hidden"><label for="loss-SideGlidingL-Mod" class="p-1">O</label></td>
+                                <td class="py-2 px-4 border-b radio-group"><input type="radio" name="loss-SideGlidingL" id="loss-SideGlidingL-Min" value="Min" class="hidden"><label for="loss-SideGlidingL-Min" class="p-1">I</label></td>
+                                <td class="py-2 px-4 border-b radio-group"><input type="radio" name="loss-SideGlidingL" id="loss-SideGlidingL-Nil" value="Nil" class="hidden"><label for="loss-SideGlidingL-Nil" class="p-1">L</label></td>
+                                <td class="py-2 px-4 border-b"><input type="text" data-type="symptoms-SideGlidingL" class="input-text table-input text-sm"></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- ============================================= -->
+            <!-- SECTION 4: CLASSIFICATION -->
+            <!-- ============================================= -->
+            <section class="form-section">
+                <h3 class="text-xl font-semibold text-gray-800 mb-4 border-b pb-2">4. Provisional Classification</h3>
+                
+                <div class="mb-6">
+                    <h4 class="font-bold mb-2">Primary Classification</h4>
+                    <div class="radio-group flex flex-wrap gap-4 radio-inline">
+                        <input type="radio" id="class-derangement" name="primaryClassification" value="Derangement" class="hidden">
+                        <label for="class-derangement">Derangement</label>
+                        <input type="radio" id="class-dysfunction" name="primaryClassification" value="Dysfunction" class="hidden">
+                        <label for="class-dysfunction">Dysfunction</label>
+                        <input type="radio" id="class-postural" name="primaryClassification" value="Postural" class="hidden">
+                        <label for="class-postural">Postural</label>
+                        <input type="radio" id="class-other" name="primaryClassification" value="Other" class="hidden">
+                        <label for="class-other">Other Subgroup</label>
+                    </div>
+                </div>
+
+                <div class="mb-6">
+                    <h4 class="font-bold mb-2">Derangement / Directional Preference (DP)</h4>
+                    <div class="radio-group flex flex-wrap gap-4 radio-inline">
+                        <input type="radio" id="der-central" name="derangementType" value="Central/Symmetrical" class="hidden">
+                        <label for="der-central">Central or Symmetrical</label>
+                        <input type="radio" id="der-aboveknee" name="derangementType" value="Unilateral/Asymmetrical Above Knee" class="hidden">
+                        <label for="der-aboveknee">Unilateral or Asymmetrical above knee</label>
+                        <input type="radio" id="der-belowknee" name="derangementType" value="Unilateral/Asymmetrical Below Knee" class="hidden">
+                        <label for="der-belowknee">Unilateral or Asymmetrical below knee</label>
+                    </div>
+                    <div class="input-group mt-3">
+                        <label for="directionalPreference" class="block mb-1">Directional Preference (DP)</label>
+                        <input type="text" id="directionalPreference" name="directionalPreference" class="input-text" placeholder="e.g., Extension, Flexion, Right Side Glide">
+                    </div>
+                </div>
+
+                <div class="mb-6">
+                    <h4 class="font-bold mb-2">Potential Drivers of Pain and/or Disability</h4>
+                    <div class="input-group">
+                        <label for="comorbidities" class="block mb-1">Comorbidities</label>
+                        <textarea id="comorbidities" name="comorbidities" rows="2" class="input-text"></textarea>
+                    </div>
+                    <div class="input-group mt-3">
+                        <label for="cognitiveEmotional" class="block mb-1">Cognitive - Emotional Factors</label>
+                        <textarea id="cognitiveEmotional" name="cognitiveEmotional" rows="2" class="input-text"></textarea>
+                    </div>
+                    <div class="input-group mt-3">
+                        <label for="contextualFactors" class="block mb-1">Contextual Factors</label>
+                        <textarea id="contextualFactors" name="contextualFactors" rows="2" class="input-text"></textarea>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ============================================= -->
+            <!-- SECTION 5: MANAGEMENT -->
+            <!-- ============================================= -->
+            <section class="form-section">
+                <h3 class="text-xl font-semibold text-gray-800 mb-4 border-b pb-2">5. Principles of Management</h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div class="input-group">
+                        <label for="exerciseType" class="block mb-1">Exercise Type</label>
+                        <input type="text" id="exerciseType" name="exerciseType" class="input-text" placeholder="e.g., Extension in lying, Flexion in standing">
+                    </div>
+                    <div class="input-group">
+                        <label for="frequency" class="block mb-1">Frequency</label>
+                        <input type="text" id="frequency" name="frequency" class="input-text" placeholder="e.g., Every 2 hours, 10 reps">
+                    </div>
+                </div>
+                <div class="input-group mt-4">
+                    <label for="managementGoals" class="block mb-1">Management Goals</label>
+                    <textarea id="managementGoals" name="managementGoals" rows="3" class="input-text" placeholder="e.g., Abolish radicular symptoms, Restore full flexion"></textarea>
+                </div>
+                <div class="input-group mt-4">
+                    <label for="otherInterventions" class="block mb-1">Other Exercises / Interventions</label>
+                    <textarea id="otherInterventions" name="otherInterventions" rows="3" class="input-text"></textarea>
+                </div>
+                
+                <div class="input-group mt-4">
+                    <label for="signature" class="block mb-1">Clinician Signature</label>
+                    <input type="text" id="signature" name="signature" class="input-text" required>
+                </div>
+            </section>
+
+
+            <!-- ============================================= -->
+            <!-- SUBMIT BUTTON -->
+            <!-- ============================================= -->
+            <div class="p-6 text-center">
+                <button type="submit" class="w-full md:w-auto px-8 py-3 bg-indigo-600 text-white font-bold text-lg rounded-lg shadow-lg hover:bg-indigo-700 transition duration-300 transform hover:scale-[1.01]">
+                    Save Assessment Data
+                </button>
+                <div id="outputMessage" class="mt-4 text-sm font-medium text-gray-700 hidden">
+                    Data captured! Check the browser console (F12) for the generated JSON object.
+                </div>
+            </div>
+
+        </form>
+    </div>
+
+    <!-- ============================================= -->
+    <!-- JAVASCRIPT FOR DATA CAPTURE -->
+    <!-- ============================================= -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            document.getElementById('date').valueAsDate = new Date();
+        });
+
+        document.getElementById('assessmentForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            
+            const form = event.target;
+            const formData = new FormData(form);
+            const data = {};
+
+            // 1. General Form Fields (Simple Key-Value Pairs)
+            formData.forEach((value, key) => {
+                // Ignore radio/checkboxes initially to handle them as arrays
+                if (key.includes('loss-') || key.includes('symptoms-') || key.includes('worse') || key.includes('better')) {
+                    return; 
+                }
+                data[key] = value;
+            });
+
+            // 2. Process Movement Loss Table
+            const movements = ["Flexion", "Extension", "SideGlidingR", "SideGlidingL"];
+            data.movementLoss = movements.map(movement => {
+                const lossKey = 'loss-' + movement;
+                const symptomKey = 'symptoms-' + movement;
+                
+                const lossValue = formData.get(lossKey) || null;
+                const symptomElement = form.querySelector(`input[data-type="symptoms-${movement}"]`);
+                const symptomValue = symptomElement ? symptomElement.value : '';
+
+                return {
+                    movement: movement,
+                    degree: lossValue,
+                    symptoms: symptomValue
+                };
+            });
+            
+            // 3. Process Checkboxes for Worse/Better
+            data.symptomModifiers = {
+                worseWith: [],
+                betterWith: []
+            };
+
+            const worseCheckboxes = form.querySelectorAll('input[name^="worse"]:checked');
+            worseCheckboxes.forEach(cb => data.symptomModifiers.worseWith.push(cb.value));
+
+            const betterCheckboxes = form.querySelectorAll('input[name^="better"]:checked');
+            betterCheckboxes.forEach(cb => data.symptomModifiers.betterWith.push(cb.value));
+
+
+            // 4. Final Classification (Ensuring single values are captured)
+            data.classification = {
+                primary: formData.get('primaryClassification') || null,
+                derangementType: formData.get('derangementType') || null,
+                directionalPreference: formData.get('directionalPreference') || '',
+                comorbidities: formData.get('comorbidities') || '',
+                cognitiveEmotional: formData.get('cognitiveEmotional') || '',
+                contextualFactors: formData.get('contextualFactors') || ''
+            };
+            
+            data.management = {
+                exerciseType: formData.get('exerciseType') || '',
+                frequency: formData.get('frequency') || '',
+                managementGoals: formData.get('managementGoals') || '',
+                otherInterventions: formData.get('otherInterventions') || ''
+            };
+
+            // 5. Clean up the final object to remove keys that were processed into structured objects
+            delete data.primaryClassification;
+            delete data.derangementType;
+            delete data.directionalPreference;
+            delete data.comorbidities;
+            delete data.cognitiveEmotional;
+            delete data.contextualFactors;
+            delete data.exerciseType;
+            delete data.frequency;
+            delete data.managementGoals;
+            delete data.otherInterventions;
+            delete data.signature; // Signature moved to top level in data structure, keeping it for now.
+
+            for (const key of Object.keys(data)) {
+                if (key.includes('loss-') || key.includes('symptoms-') || key.includes('worse') || key.includes('better')) {
+                    delete data[key];
+                }
+            }
+
+
+            // Final Output (Simulates sending data to a server)
+            const finalJson = JSON.stringify(data, null, 2);
+            console.log("--- START ASSESSMENT DATA JSON ---");
+            console.log(finalJson);
+            console.log("--- END ASSESSMENT DATA JSON ---");
+            
+            // Display confirmation message
+            document.getElementById('outputMessage').classList.remove('hidden');
+            setTimeout(() => {
+                document.getElementById('outputMessage').classList.add('hidden');
+            }, 5000);
+        });
+    </script>
+
+</body>
+</html>
